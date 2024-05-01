@@ -1,0 +1,89 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}About Us{% endblock %} 
+{% block content %}
+<style>
+    .about {
+        margin-top: 150px;
+    }
+
+    .about-flex {
+        display: flex;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .about-flex img {
+        width: 15cm;
+    }
+
+    .about-flex div {
+        margin-right: 20px;
+    }
+
+    .about-flex p {
+        color: gray;
+    }
+
+    @media only screen and (max-width: 700px) {
+        .about {
+            margin-top: 120px;
+        }
+
+        .about-flex {
+            display: block;
+            margin-bottom: 10px;
+            margin-left: 10px;
+        }
+
+        .about-flex img {
+            width: 90vw;
+        }
+
+        .about-flex div {
+            margin-bottom: 20px;
+            margin-right: 0;
+        }
+
+        .about-flex p {
+            padding-bottom: 20px;
+        }
+    }
+</style>
+<main>
+    <section class="about">
+        <div class="about-flex">
+            <div>
+                <img src="{% static 'images/core/transport 4.jpg' %}" alt="vans for transportation">
+            </div>
+            <div>
+                <h3>ABOUT IFLEET</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque deserunt
+                    sapiente natus asperiores earum minima, inventore harum eligendi. Modi
+                    tempore dolor vero qui alias vitae quisquam autem consequuntur veritatis
+                    dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque deserunt
+                    sapiente natus asperiores earum minima, inventore harum eligendi. Modi
+                    tempore dolor vero qui alias vitae quisquam autem consequuntur veritatis
+                    dicta.</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque deserunt
+                    sapiente natus asperiores earum minima, inventore harum eligendi. Modi
+                    tempore dolor vero qui alias vitae quisquam autem consequuntur veritatis
+                    dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque deserunt
+                    sapiente natus asperiores earum minima, inventore harum eligendi. Modi
+                    tempore dolor vero qui alias vitae quisquam autem consequuntur veritatis
+                    dicta.</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque deserunt
+                    sapiente natus asperiores earum minima, inventore harum eligendi. Modi
+                    tempore dolor vero qui alias vitae quisquam autem consequuntur veritatis
+                    dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque deserunt
+                    sapiente natus asperiores earum minima, inventore harum eligendi. Modi
+                    tempore dolor vero qui alias vitae quisquam autem consequuntur veritatis
+                    dicta. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque deserunt
+                    sapiente natus asperiores earum minima, inventore harum eligendi. Modi
+                    tempore dolor vero qui alias vitae quisquam autem consequuntur veritatis
+                    dicta.</p>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

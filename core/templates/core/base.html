@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} | Ifleet</title>
+    <link rel="stylesheet" href="{% static 'core/core.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="topnav" id="myTopnav">
+                <div class="logo">
+                    <a href="{% url 'index' %}">IFLEET</a>
+                </div>
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'contact' %}">Contact Us</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'driver-dashboard' %}">Dashboard</a>
+                <div class="dropdown">
+                    <button class="dropbtn">My Account
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="">My Account</a>
+                        <a href="">Change Password</a>
+                    </div>
+                </div>
+                <div class="logout-btn">
+                    <form action="{% url 'logout' %}" method="post" style="background-color: transparent; padding: 0; margin: 10px;">
+                        {% csrf_token %}
+                        <button type="submit" style="background: blue; color: white; border-color: transparent; padding-top: 5px; padding-bottom: 5px; padding-right: 8px; padding-left: 8px; border-radius: 10px; cursor: pointer;">Logout</button>
+                    </form>
+                </div>
+                {% else %}
+                <a href="{% url 'signup-home' %}">Register</a>
+                <a href="{% url 'signin-home' %}">Login</a>
+                {% endif %}
+                <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+            </div>
+        </nav>
+    </header>
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+    {% block content %}
+    {% endblock %}
+    <footer>
+        <div class="footer-flex">
+            <div>
+                <h2>CONTACT INFO</h2>
+                <p>Address No. 123456 street</p>
+                <p>New City, Country</p>
+                <p>Mobile: +254 700000007</p>
+                <p>Email: example@gmail.com</p>
+            </div>
+            <div>
+                <h2>MODULES</h2>
+                <ul>
+                    <li>Transport Module</li>
+                    <li>Login Module</li>
+                    <li>Driver Module</li>
+                    <li>Truck Module</li>
+                </ul>
+            </div>
+            <div>
+                <h2>PROJECT LINKS</h2>
+                <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About us</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'signin-home' %}">Login</a></li>
+                    <li><a href="{% url 'signup-home' %}">Register</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>ABOUT IFLEET</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. <br>
+                    Praesentium ratione modi aperiam ipsa necessitatibus, <br>
+                    temporibus aspernatur nihil minus, numquam voluptas nostrum <br>
+                    nisi reiciendis eos! Amet nobis eaque at vero dolorem?</p>
+            </div>
+        </div>
+        <p class="end">Made by Excels Kennedy &copy; 2024</p>
+    </footer>
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

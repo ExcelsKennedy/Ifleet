@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+{% block title %}Log out{% endblock %}
+{% block content %} 
+<style>
+    body{
+        background-color: #eee;
+    }
+    .logout{
+        margin-top: 90px;
+        /* background-color: white; */
+        padding: 20px;
+    }
+</style>
+<div class="logout">
+    <h2>You have been logged out</h2>
+    <small><a style="color: blue;" href="{% url 'signin-home' %}">Log In Again</a></small>
+</div>
+
+{% endblock %} 

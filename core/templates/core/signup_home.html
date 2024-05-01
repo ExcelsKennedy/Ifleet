@@ -1,0 +1,47 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Sign up{% endblock %}
+{% block content %}
+<style>
+    body{
+        background-color: #eee;
+    }
+    main{
+        margin-top: 90px;
+        margin-left: 25%;
+        background-color: white;
+        padding: 20px;
+        margin-right: 20px;
+        width: 11cm;
+    }
+    .link-btn{
+        color: white;
+        background-color: blue;
+        text-decoration: none;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 15px;
+        padding-right: 15px;
+        transition: 0.5s;
+        margin: 10px;
+    }
+    .link-btn:hover{
+        background-color: white;
+        color: blue;
+        border: 1px solid blue;
+    }
+    @media only screen and (max-width: 700px) {
+        main {
+            margin-left: 25px;
+            width: 90vw;
+        }
+    }
+</style>
+<main>
+<h1>Sign up page</h1>
+<p style="margin-bottom: 20px;">Hi! We are delighted you want to join us 😁.</p>
+    <div>
+        <a class="link-btn" href="{% url 'signup-customer' %}">Sign up</a>
+    </div>
+</main>
+{% endblock %}
