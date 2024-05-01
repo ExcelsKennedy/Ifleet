@@ -1,0 +1,105 @@
+{% extends 'drivers/base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<style>
+    body {
+        background-color: #eee;
+    }
+
+    .content-section {
+        background: #ffffff;
+        padding: 10px 20px;
+        border: 1px solid #dddddd;
+        margin-bottom: 20px;
+        width: 50vw;
+        margin-left: 20%;
+    }
+
+    .content-section p {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: grey;
+    }
+
+    .media {
+        display: flex;
+    }
+
+    .media img {
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        margin-right: 20px;
+    }
+
+    button {
+        color: blue;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+        border-color: transparent;
+        border-radius: 10px;
+    }
+
+    button:hover {
+        border-color: white;
+        transition: 0.5s;
+        background-color: blue;
+        color: white;
+    }
+
+    /* Hide error messages for specific form fields */
+    .error-message {
+        display: none;
+    }
+    h1 {
+        text-align: left;
+        padding-left: 10%;
+        background-color: rgb(41, 8, 160);
+        color: white;
+        margin-bottom: 40px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-top: 90px;
+    }
+    @media only screen and (max-width: 700px) {
+        .content-section {
+            width: 90vw;
+            margin-left: 25px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+    }
+</style>
+<h1>MY ACCOUNT</h1>
+<div class="content-section">
+    <div class="media">
+        <img src="{{ user.customerprofile.image.url }}">
+        <div class="media-body">
+            <h2>{{ user.username }}</h2> <br>
+            <br>
+            <p>{{ user.email }}</p> <br>
+        </div>
+    </div>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <label>Username:</label> <br>
+            {{ u_form.username }} <br>
+            <span class="error-message">{{ u_form.username.errors }}</span>
+            <label for="email" style="margin-top: 100px;">Email:</label> <br>
+            {{ u_form.email }} <br>
+            {{ p_form }} <br>
+        </div>
+
+        <button>Update</button>
+    </form>
+</div>
+{% endblock %}

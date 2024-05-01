@@ -1,0 +1,123 @@
+{% extends 'drivers/base.html' %}
+{% load static %}
+{% block title %}Inspection form{% endblock %}
+{% block content %}
+<style>
+    body {
+        background-color: #eee;
+    }
+
+    main {
+        padding-top: 90px;
+    }
+
+    form {
+        width: 50%;
+        background-color: white;
+        padding: 20px;
+        margin-left: 25%;
+        border-radius: 10px;
+    }
+
+    textarea {
+        width: 10cm;
+        height: 3cm;
+        padding: 5px;
+        margin: 5px;
+        border-radius: 10px;
+    }
+
+    h1{
+        padding-top: 10px;
+        margin: 0;
+    }
+    input{
+        width: 10cm;
+    }
+    fieldset{
+        padding: 20px;
+    }
+    @media only screen and (max-width: 770px) {
+        h1 {
+            font-size: 30px;
+            padding-top: 10px;
+        }
+
+        main {
+            padding-top: 90px;
+        }
+
+        form {
+            width: 90vw;
+            background-color: white;
+            margin-left: 25px;
+        }
+
+        textarea {
+            width: 70vw;
+            height: 3cm;
+            padding: 5px;
+            margin: 5px;
+            border-radius: 10px;
+        }
+    }
+</style>
+<a style="color: blue;" href="{% url 'vehicle-inspection-history' %}">Go to Inspection History</a>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1 style="background-color: darkblue; text-align: center; color: white;">Inspection Form</h1>
+    <fieldset>
+        <label>
+            <h1>Driver</h1>
+        </label>
+        <p style="color: gray;">Select Driver</p>
+        {{ form.Driver }}
+        <label>
+            <h1>Mirrors</h1>
+        </label>
+        <p style="color: gray;">Check mirrors for any defects and align</p>
+        {{ form.Mirrors }}
+        <label>
+            <h1>Check Seats</h1>
+        </label>
+        <p style="color: gray;">Check seats for cosmetic defects</p>
+        {{ form.Seats }}
+        <label>
+            <h1>Electronics</h1>
+        </label>
+        <p style="color: gray;">Check gauges and meters</p>
+        {{ form.Electronics }}
+        <label>
+            <h1>Fuel level</h1>
+        </label>
+        <p style="color: gray;">Please record your starting fuel level</p>
+        {{ form.Fuel_level }}
+        <label>
+            <h1>Is there any damage on the vehicle</h1>
+        </label>
+        <p style="color: gray;">Check for damage</p>
+        {{ form.Damage }}
+        <label>
+            <h1>Medical Kit</h1>
+        </label>
+        <p style="color: gray;">Med kit attached to passenger headset</p>
+        {{ form.Medical_kit }}
+        <label>
+            <h1>Body</h1>
+        </label>
+        <p style="color: gray;">Check to make sure there are no aesthetic issues with the vehicle body</p>
+        {{ form.Body }}
+        <label>
+            <h1>Tires</h1>
+        </label>
+        <p style="color: gray;">Check Tires</p>
+        {{ form.Tires }}
+        <label>
+            <h1>General Remarks</h1>
+        </label>
+        <p style="color: gray;">Please provide any general remarks or comments not captured above</p>
+        {{ form.General_Remarks }} <br>
+        <button type="submit">Submit</button>
+    </fieldset>
+</form>
+{% endblock %}

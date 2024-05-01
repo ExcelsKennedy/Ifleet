@@ -1,0 +1,75 @@
+{% extends 'drivers/base.html' %}
+{% load static %}
+{% block title %}Inspection history{% endblock %}
+{% block content %}
+<style>
+    table {
+        text-align: center;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid darkblue;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+
+    td {
+        width: 3cm;
+    }
+
+    thead {
+        background-color: darkblue;
+        color: white;
+    }
+
+    @media only screen and (max-width: 700px) {
+        table {
+            text-align: center;
+            width: 90vw;
+        }
+
+        td {
+            font-size: 12px;
+            padding: 5px;
+        }
+
+        thead {
+            background-color: darkblue;
+            color: white;
+        }
+    }
+</style>
+<a style="color: blue;" href="{% url 'vehicle-inspection' %}">Go to Inspection</a>
+<table>
+    <thead>
+            <td>Driver</td>
+            <td>Mirrors</td>
+            <td>Seats</td>
+            <td>Electronics</td>
+            <td>Damage</td>
+            <td>Medical Kit</td>
+            <td>Body</td>
+            <td>Tires</td>
+            <td>General Remarks</td>
+            <td>Date</td>
+    </thead>
+    <tbody>
+        {% for inspection in inspection %}
+        <tr>
+            <td>{{ inspection.Driver }}</td>
+            <td>{{ inspection.Mirrors }}</td>
+            <td>{{ inspection.Seats }}</td>
+            <td>{{ inspection.Electronics }}</td>
+            <td>{{ inspection.Damage }}</td>
+            <td>{{ inspection.Medical_kit }}</td>
+            <td>{{ inspection.Body }}</td>
+            <td>{{ inspection.Tires }}</td>
+            <td>{{ inspection.General_Remarks }}</td>
+            <td>{{ inspection.Date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

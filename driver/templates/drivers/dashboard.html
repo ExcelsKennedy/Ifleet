@@ -1,0 +1,106 @@
+{% extends 'drivers/base.html' %}
+{% load static %}
+{% block title %}Dashboard{% endblock %} 
+{% block content %}
+<style>
+    table {
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 5px;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid darkblue;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+
+    td {
+        width: 3cm;
+    }
+
+    thead {
+        background-color: darkblue;
+        color: white;
+    }
+
+    @media only screen and (max-width: 700px) {
+        table {
+            text-align: center;
+            width: 90vw;
+        }
+
+        td {
+            font-size: 12px;
+            padding: 5px;
+        }
+
+        thead {
+            background-color: darkblue;
+            color: white;
+        }
+    }
+</style>
+<h1 style="background-color: darkblue; text-align: center; color: white;">Inspection</h1>
+<a style="color: blue;" href="{% url 'vehicle-inspection' %}">Go to Inspection Page</a>
+<table>
+    <thead>
+            <td>Driver</td>
+            <td>Mirrors</td>
+            <td>Seats</td>
+            <td>Electronics</td>
+            <td>Damage</td>
+            <td>Medical Kit</td>
+            <td>Body</td>
+            <td>Tires</td>
+            <td>General Remarks</td>
+            <td>Date</td>
+    </thead>
+    <tbody>
+        {% for inspection in inspection %}
+        <tr>
+            <td>{{ inspection.Driver }}</td>
+            <td>{{ inspection.Mirrors }}</td>
+            <td>{{ inspection.Seats }}</td>
+            <td>{{ inspection.Electronics }}</td>
+            <td>{{ inspection.Damage }}</td>
+            <td>{{ inspection.Medical_kit }}</td>
+            <td>{{ inspection.Body }}</td>
+            <td>{{ inspection.Tires }}</td>
+            <td>{{ inspection.General_Remarks }}</td>
+            <td>{{ inspection.Date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h1 style="background-color: darkblue; text-align: center; color: white;">Orders</h1>
+<a style="color: blue;" href="">Go to Order Assignment Page</a>
+<table>
+    <thead>
+        <td>Driver</td>
+        <td>Customer's Name</td>
+        <td>Customer's Email</td>
+        <td>Customer's Location</td>
+        <td>Delivery location</td>
+        <td>Customer's order</td>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.driver }}</td>
+            <td>{{ order.customer_name }}</td>
+            <td>{{ order.customer_email }}</td>
+            <td>{{ order.current_location }}</td>
+            <td>{{ order.delivery_location }}</td>
+            <td>{{ order.customer_order }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h1 style="background-color: darkblue; text-align: center; color: white;">Fuel History</h1>
+<a style="color: blue;" href="">Go to Fuel Purchase Page</a>
+<h1 style="background-color: darkblue; text-align: center; color: white;">Shops History</h1>
+<a style="color: blue;" href="{% url 'vehicle-inspection' %}">Go to Shops Page</a>
+{% endblock %}
