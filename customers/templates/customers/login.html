@@ -1,0 +1,90 @@
+{% extends 'customers/base.html' %}
+{% load static %}
+{% block title %}Sign in{% endblock %}
+{% block content %}
+<style>
+    body {
+        background-color: #eee;
+    }
+
+    form {
+        margin-left: 25%;
+        background-color: white;
+        padding: 50px;
+        width: 50%;
+    }
+
+    form a {
+        color: blue;
+    }
+
+    input {
+        margin-bottom: 10px;
+        width: 10cm;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    button {
+        background: blue;
+        color: white;
+        border-color: transparent;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 8px;
+        padding-left: 8px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+    h1 {
+        text-align: left;
+        padding-left: 10%;
+        background-color: rgb(41, 8, 160);
+        color: white;
+        margin-bottom: 40px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-top: 70px;
+    }
+
+    @media only screen and (max-width: 700px) {
+        form {
+            margin-left: 25px;
+            padding: 20px;
+            width: 90vw;
+        }
+
+        input {
+            width: 80vw;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    }
+</style>
+<main>
+    <h1>LOGIN</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Username</label> <br>
+        {{ form.username }} <br>
+        <label>Password</label> <br>
+        {{ form.password }} <br>
+        <small>If you forgot password please use <a href="">Forgot password</a>. No account yet? <a
+                href="{% url 'signup-customer' %}">Sign up</a></small><br>
+        {% if form.errors or form.non_field_errors %}
+        <div class="errors">
+            {% for field in form %}
+            {{ field.errors }}
+            {% endfor %}
+
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+        <button type="submit">SIGN IN</button><br>
+    </form>
+</main>
+{% endblock %}

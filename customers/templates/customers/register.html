@@ -1,0 +1,117 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Sign up{% endblock %}
+{% block content %}
+<style>
+    .flex {
+        display: flex;
+    }
+
+    .flex div {
+        margin-right: 20px;
+    }
+
+    input {
+        margin-bottom: 20px;
+        margin-top: 5px;
+    }
+
+    button {
+        background: blue;
+        color: white;
+        border-color: transparent;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 8px;
+        padding-left: 8px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    h1 {
+        text-align: left;
+        padding-left: 10%;
+        background-color: rgb(41, 8, 160);
+        color: white;
+        margin-bottom: 40px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    hr {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    body {
+        background-color: #eee;
+    }
+
+    form {
+        background-color: white;
+        padding: 40px;
+        margin-bottom: 20px;
+        margin-top: 100px;
+        margin-left: 25%;
+        width: 50%;
+    }
+
+    @media only screen and (max-width: 700px) {
+        .flex {
+            display: block;
+        }
+
+        .flex div {
+            margin-bottom: 0px;
+        }
+
+        input {
+            margin-bottom: 20px;
+            margin-top: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        form {
+            background-color: white;
+            padding-left: 50px;
+            margin-bottom: 20px;
+            margin-top: 120px;
+            margin-left: 25px;
+            width: 90vw;
+        }
+    }
+</style>
+<main>
+    <form method="post">
+        {% csrf_token %}
+        <h1>CUSTOMER REGISTRATION FORM</h1>
+        <hr>
+        <label>Username</label><br>
+        {{ form.username }} <br>
+        <label>Email</label><br>
+        {{ form.email }} <br>
+        <label>Password</label><br>
+        {{ form.password1 }} <br>
+        <label>Confirm Password</label><br>
+        {{ form.password2 }} <br>
+
+        {% if form.errors or form.non_field_errors %}
+        <div style="color: red;">
+            {% for field in form %}
+            {{ field.errors }}
+            {% endfor %}
+
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        <button type="submit">Register</button><br>
+        <small>Already have an account? <a style="color: blue;" href="{% url 'login' %}">Sign in</a></small><br>
+    </form>
+</main>
+{% endblock %}

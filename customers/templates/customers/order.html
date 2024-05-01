@@ -1,0 +1,127 @@
+{% extends 'customers/base.html' %}
+{% load static %}
+{% block title %}Order{% endblock %}
+{% block content %}
+<style>
+    body {
+        background-color: #eee;
+    }
+
+    .form {
+        margin-left: 25%;
+        padding: 20px;
+        width: 40%;
+        background-color: white;
+    }
+
+    label {
+        margin-top: 20px;
+    }
+
+    textarea {
+        width: 13cm;
+        height: 3cm;
+        margin-top: 10px;
+        padding: 10px;
+    }
+
+    input {
+        width: 13cm;
+        margin-bottom: 10px;
+    }
+
+    button {
+        background: darkblue;
+        color: white;
+        border-color: transparent;
+        margin-top: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 8px;
+        padding-left: 8px;
+        cursor: pointer;
+    }
+
+    h4 {
+        padding-top: 0;
+        text-align: center;
+        width: 14.2cm;
+        background-color: darkblue;
+        color: white;
+        padding: 20px;
+        margin-left: -20px;
+        margin-top: -20px;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        text-align: left;
+        padding-left: 10%;
+        background-color: rgb(41, 8, 160);
+        color: white;
+        margin-bottom: 40px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-top: 90px;
+    }
+
+    @media only screen and (max-width: 770px) {
+        .form {
+            margin-left: 20px;
+            padding: 20px;
+            width: 90vw;
+            color: gray;
+            background-color: white;
+        }
+
+        label {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 80vw;
+            height: 3cm;
+            margin-top: 10px;
+            padding: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+            width: 80vw;
+        }
+
+        h4 {
+            padding-top: 0;
+            text-align: center;
+            width: 90vw;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        input {
+            width: 80vw;
+        }
+    }
+</style>
+<h1>MAKE AN ORDER</h1>
+    <main>
+        <form class="form" method="post">
+            {% csrf_token %}
+            <h4>PLACE AN ORDER</h4>
+            <label>Your full names</label><br>
+            {{ form.name }} <br>
+            <label>Where are you ordering from?</label><br>
+            {{ form.location1 }} <br>
+            <label>Where do you want to send your order?</label><br>
+            {{ form.location2 }} <br>
+            <label>Place your Order</label>
+            {{ form.order }}
+            <button type="submit">ORDER</button>
+        </form>
+    </main>
+{% endblock %}
